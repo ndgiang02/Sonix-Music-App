@@ -21,8 +21,9 @@ class SvgWidget extends StatelessWidget {
       ic,
       width: width,
       height: height,
-      fit: BoxFit.none,
-      theme: SvgTheme(currentColor: color ?? Colors.black),
+      fit: BoxFit.contain,
+      colorFilter:
+          color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
     );
   }
 }

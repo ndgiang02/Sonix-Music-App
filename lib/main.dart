@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'features/presentation/home/page/home_page.dart';
+import 'features/presentation/play/page/play_page.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Custom Bottom Nav Demo',
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
-      home: const HomePage(),
+      home: const NowPlayingScreen(),
     );
   }
 }

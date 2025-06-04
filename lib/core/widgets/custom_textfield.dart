@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sonix/core/constants/constant.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextInputType keyboardType;
@@ -72,7 +73,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         TextFormField(
           controller: widget.ctr,
           obscureText: widget.obscureText,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
           textInputAction: widget.textInputAction,
           onChanged:
               (val) => widget.onChanged != null ? widget.onChanged!(val) : null,
@@ -86,10 +87,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
             suffixIcon: Icon(widget.icon),
             counterText: '',
             filled: true,
-            fillColor: Colors.grey.shade200,
+            fillColor: AppColors.surface,
             contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 14,
+              horizontal: 12,
+              vertical: 8,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
