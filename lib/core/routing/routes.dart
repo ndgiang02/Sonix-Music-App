@@ -3,13 +3,14 @@ import 'package:go_router/go_router.dart';
 import 'package:sonix/core/storage/session_controller.dart';
 import 'package:sonix/features/presentation/auth/page/auth_page.dart';
 import 'package:sonix/features/presentation/home/page/home_page.dart';
+import 'package:sonix/features/presentation/main/page/main_page.dart';
 import 'package:sonix/features/presentation/splash/page/splash_page.dart';
 
 class AppRoutes {
   static GoRouter getRouter(BuildContext context) {
     final sessionController = SessionController();
     return GoRouter(
-      initialLocation: '/home',
+      initialLocation: '/main',
       /*   redirect: (context, state) {
         return _redirect(context, state, sessionController);
       },*/
@@ -24,6 +25,7 @@ class AppRoutes {
               ),
         ),
         GoRoute(path: '/home', builder: (context, state) => HomePage()),
+        GoRoute(path: '/main', builder: (context, state) => MainPage()),
       ],
     );
   }

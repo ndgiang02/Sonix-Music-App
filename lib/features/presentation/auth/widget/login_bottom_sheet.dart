@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sonix/core/constants/constant.dart';
-import 'package:sonix/core/constants/constant_icons.dart';
+import 'package:sonix/core/constants/icons.dart';
 import 'package:sonix/core/widgets/custom_button.dart';
 import 'package:sonix/core/widgets/custom_textfield.dart';
 import 'package:sonix/core/widgets/svg_widget.dart';
@@ -86,7 +86,7 @@ class _LoginBottomSheetState extends State<LoginBottomSheet>
                     CustomTextField(
                       ctr: emailController,
                       hintText: 'Email',
-                      prefixWidget: SvgWidget(ic: AppIcons.ic_email),
+                      prefixWidget: SvgWidget(ic: ic_email),
                       keyboardType: TextInputType.emailAddress,
                     ),
                     const SizedBox(height: 16),
@@ -94,7 +94,7 @@ class _LoginBottomSheetState extends State<LoginBottomSheet>
                     CustomTextField(
                       ctr: passwordController,
                       hintText: 'Password',
-                      prefixWidget: SvgWidget(ic: AppIcons.ic_password),
+                      prefixWidget: SvgWidget(ic: ic_password),
                       icon: obscure ? Icons.visibility_off : Icons.visibility,
                       obscureText: obscure,
                       actionRight: () {

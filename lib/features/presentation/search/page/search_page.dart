@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:sonix/core/constants/constant_icons.dart';
+import 'package:sonix/core/constants/icons.dart';
 import 'package:sonix/core/widgets/custom_textfield.dart';
 import 'package:sonix/core/widgets/svg_widget.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<SearchPage> createState() => _SearchPageState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchPageState extends State<SearchPage> {
   final TextEditingController _controller = TextEditingController();
   bool isSearching = false;
 
@@ -40,64 +40,66 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 50,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            Expanded(
-              child: CustomTextField(
-                ctr: _controller,
-                hintText: 'Tìm kiếm bài hát',
-                prefixWidget: SvgWidget(ic: AppIcons.ic_search),
-                keyboardType: TextInputType.text,
-                icRight: AppIcons.ic_search,
-              ),
-            ),
-            if (isSearching)
-              TextButton(onPressed: _cancelSearch, child: const Text('Huỷ')),
-          ],
-        ),
-      ),
-      body:
-          isSearching
-              ? const Center(child: Text('Hiển thị kết quả tìm kiếm...'))
-              : Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Gợi ý cho bạn',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Expanded(
-                      child: ListView.separated(
-                        itemCount: suggestions.length,
-                        separatorBuilder: (_, __) => const Divider(),
-                        itemBuilder: (context, index) {
-                          final title = suggestions[index];
-                          return ListTile(
-                            leading: const Icon(Icons.music_note),
-                            title: Text(title),
-                            onTap: () {
-                              _controller.text = title;
-                              setState(() => isSearching = true);
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 50,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          title: Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  ctr: _controller,
+                  hintText: 'Tìm kiếm bài hát',
+                  prefixWidget: SvgWidget(ic: ic_search, height: 12, width: 12),
+                  keyboardType: TextInputType.text,
+                  //icRight: ic_search,
                 ),
               ),
+              if (isSearching)
+                TextButton(onPressed: _cancelSearch, child: const Text('Huỷ')),
+            ],
+          ),
+        ),
+        body:
+            isSearching
+                ? const Center(child: Text('Hiển thị kết quả tìm kiếm...'))
+                : Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Gợi ý cho bạn',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Expanded(
+                        child: ListView.separated(
+                          itemCount: suggestions.length,
+                          separatorBuilder: (_, __) => const Divider(),
+                          itemBuilder: (context, index) {
+                            final title = suggestions[index];
+                            return ListTile(
+                              leading: const Icon(Icons.music_note),
+                              title: Text(title),
+                              onTap: () {
+                                _controller.text = title;
+                                setState(() => isSearching = true);
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+      ),
     );
   }
 }

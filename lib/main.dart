@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'features/presentation/play/page/play_page.dart';
+import 'core/constants/constant.dart';
+import 'core/routing/routes.dart';
+import 'features/presentation/auth/bloc/auth_bloc.dart';
+import 'features/presentation/auth/bloc/auth_event.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -9,20 +13,21 @@ void main() async {
   runApp(MyApp());
 }
 
+/*
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Custom Bottom Nav Demo',
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
-      home: const NowPlayingScreen(),
+      title: 'Custom Bottom',
+      theme: themeData1(context),
+      home: MainPage(),
     );
   }
 }
+*/
 
-/*
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -33,10 +38,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         title: app_name,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: 'SF-Pro-Display', useMaterial3: true),
+        theme: ThemeData(fontFamily: 'SF-Pro-Display'),
         routerConfig: AppRoutes.getRouter(context),
       ),
     );
   }
 }
-*/

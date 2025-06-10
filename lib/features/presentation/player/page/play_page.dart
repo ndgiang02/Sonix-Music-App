@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:sonix/core/constants/assets.dart';
 import 'package:sonix/core/constants/constant.dart';
-import 'package:sonix/core/constants/constant_assets.dart';
-import 'package:sonix/core/constants/constant_icons.dart';
+import 'package:sonix/core/constants/icons.dart';
 import 'package:sonix/core/widgets/svg_widget.dart';
 
 class NowPlayingScreen extends StatefulWidget {
@@ -182,7 +182,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                       icon: SvgWidget(
-                        ic: _isPlaying ? AppIcons.ic_search : AppIcons.ic_play,
+                        ic: _isPlaying ? ic_search : ic_play,
                         width: 60,
                         height: 60,
                         color: AppColors.primary,

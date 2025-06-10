@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sonix/core/constants/constant_assets.dart';
+import 'package:sonix/core/constants/assets.dart';
 
 class SignUpOrSignInSocial extends StatelessWidget {
   final VoidCallback onPressedFaceBook;

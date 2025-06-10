@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sonix/core/constants/assets.dart';
 import 'package:sonix/core/constants/constant.dart';
-import 'package:sonix/core/constants/constant_assets.dart';
 import 'package:sonix/features/presentation/home/widget/playlist_widget.dart';
 import 'package:sonix/features/presentation/home/widget/song_widget.dart';
 
@@ -17,10 +17,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -59,6 +59,28 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 10),
               _buildPopularSongs(),
               const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Playlists',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  TextButton.icon(
+                    onPressed: () {},
+                    iconAlignment: IconAlignment.end,
+                    icon: const Icon(Icons.chevron_right, size: 18),
+                    label: const Text('See All'),
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.surface,
+                      padding: EdgeInsets.zero,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              _buildPlaylists(),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
