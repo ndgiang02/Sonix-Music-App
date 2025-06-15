@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sonix/core/constants/constant.dart';
+import 'package:sonix/core/common/widgets/custom_button.dart';
+import 'package:sonix/core/configs/constants/constant.dart';
 import 'package:sonix/core/utils/responsive.dart';
-import 'package:sonix/core/widgets/custom_button.dart';
 import 'package:sonix/features/presentation/auth/bloc/auth_bloc.dart';
 import 'package:sonix/features/presentation/auth/bloc/auth_event.dart';
 import 'package:sonix/features/presentation/auth/bloc/auth_state.dart';
@@ -79,8 +79,8 @@ class AuthPage extends StatelessWidget {
                             ShowBottomSheet(type: SheetType.login),
                           );
                         },
-                        backgroundColor: AppColors.secondary,
-                        textColor: AppColors.background,
+                        backgroundColor: secondary,
+                        textColor: background,
                         showBorder: true,
                         fontWeight: FontWeight.normal,
                         sizeText: 20,
@@ -93,8 +93,8 @@ class AuthPage extends StatelessWidget {
                             ShowBottomSheet(type: SheetType.register),
                           );
                         },
-                        backgroundColor: AppColors.primary,
-                        textColor: AppColors.background,
+                        backgroundColor: primary,
+                        textColor: background,
                         showBorder: false,
                         fontWeight: FontWeight.normal,
                         sizeText: 20,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sonix/core/constants/constant.dart';
+import 'package:sonix/core/configs/constants/constant.dart';
 import 'package:sonix/core/utils/responsive.dart';
 
 class CustomButton extends StatelessWidget {
@@ -37,7 +37,7 @@ class CustomButton extends StatelessWidget {
           backgroundColor: backgroundColor,
           side:
               showBorder
-                  ? BorderSide(color: AppColors.primary, width: 3)
+                  ? BorderSide(color: primary, width: 3)
                   : BorderSide.none,
         ),
         onPressed: onPressed,

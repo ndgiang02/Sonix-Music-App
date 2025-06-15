@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sonix/core/constants/constant.dart';
-import 'package:sonix/core/constants/icons.dart';
-import 'package:sonix/core/widgets/custom_button.dart';
-import 'package:sonix/core/widgets/custom_textfield.dart';
-import 'package:sonix/core/widgets/svg_widget.dart';
+import 'package:sonix/core/common/widgets/custom_button.dart';
+import 'package:sonix/core/common/widgets/custom_textfield.dart';
+import 'package:sonix/core/common/widgets/svg_widget.dart';
+import 'package:sonix/core/configs/constants/constant.dart';
+import 'package:sonix/core/configs/constants/icons.dart';
 
 import 'login_social.dart';
 
@@ -86,7 +86,7 @@ class _LoginBottomSheetState extends State<LoginBottomSheet>
                     CustomTextField(
                       ctr: emailController,
                       hintText: 'Email',
-                      prefixWidget: SvgWidget(ic: ic_email),
+                      prefixWidget: SvgWidget(ic: icEmail),
                       keyboardType: TextInputType.emailAddress,
                     ),
                     const SizedBox(height: 16),
@@ -94,7 +94,7 @@ class _LoginBottomSheetState extends State<LoginBottomSheet>
                     CustomTextField(
                       ctr: passwordController,
                       hintText: 'Password',
-                      prefixWidget: SvgWidget(ic: ic_password),
+                      prefixWidget: SvgWidget(ic: icPassword),
                       icon: obscure ? Icons.visibility_off : Icons.visibility,
                       obscureText: obscure,
                       actionRight: () {
@@ -133,8 +133,8 @@ class _LoginBottomSheetState extends State<LoginBottomSheet>
                       child: CustomButton(
                         text: 'Login',
                         onPressed: () {},
-                        backgroundColor: AppColors.primary,
-                        textColor: AppColors.background,
+                        backgroundColor: primary,
+                        textColor: background,
                         showBorder: false,
                         fontWeight: FontWeight.w200,
                         sizeText: 20,

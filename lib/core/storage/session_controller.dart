@@ -59,4 +59,21 @@ class SessionController {
       log("Error clearing session: $e");
     }
   }
+
+  Future<void> saveLocale(String localeCode) async {
+    try {
+      await localStorage.setValue('locale', localeCode);
+    } catch (e) {
+      log("Error saving locale: $e");
+    }
+  }
+
+  Future<String?> getSavedLocale() async {
+    try {
+      return await localStorage.readValue('locale');
+    } catch (e) {
+      log("Error getting locale: $e");
+      return null;
+    }
+  }
 }

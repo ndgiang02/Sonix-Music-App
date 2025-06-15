@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sonix/core/constants/assets.dart';
+import 'package:sonix/core/configs/constants/assets.dart';
 
 class MiniPlayer extends StatelessWidget {
   const MiniPlayer({super.key});
@@ -20,7 +20,7 @@ class MiniPlayer extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                AppAssets.img_mtp,
+                img_mtp,
                 width: 50,
                 height: 50,
                 fit: BoxFit.cover,

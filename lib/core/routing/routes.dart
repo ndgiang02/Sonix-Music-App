@@ -10,7 +10,7 @@ class AppRoutes {
   static GoRouter getRouter(BuildContext context) {
     final sessionController = SessionController();
     return GoRouter(
-      initialLocation: '/main',
+      initialLocation: '/splash',
       /*   redirect: (context, state) {
         return _redirect(context, state, sessionController);
       },*/

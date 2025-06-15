@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sonix/core/constants/constant.dart';
+import 'package:sonix/core/configs/constants/constant.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextInputType keyboardType;
@@ -87,7 +87,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             suffixIcon: Icon(widget.icon),
             counterText: '',
             filled: true,
-            fillColor: AppColors.surface,
+            fillColor: surface,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 12,
               vertical: 8,

@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:sonix/core/configs/constants/constant.dart';
+import 'package:sonix/core/utils/responsive.dart';
 
 class SongCard extends StatelessWidget {
   final String title;
@@ -20,11 +22,11 @@ class SongCard extends StatelessWidget {
       width: 140,
       margin: const EdgeInsets.only(right: 12),
       decoration: BoxDecoration(
-        color: Colors.grey[850],
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(Spacing.x1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,9 +47,9 @@ class SongCard extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               title,
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                color: secondary,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -55,7 +57,9 @@ class SongCard extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               artist,
-              style: const TextStyle(color: Colors.grey),
+              style: Theme.of(
+                context,
+              ).textTheme.labelMedium!.copyWith(color: surface),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),

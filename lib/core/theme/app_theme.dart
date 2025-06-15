@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ThemeData themeData1(BuildContext context) {
+ThemeData themeData(BuildContext context) {
   return ThemeData(
     fontFamily: 'SF-Pro-Display',
     colorScheme: ColorScheme.fromSeed(
@@ -11,21 +11,21 @@ ThemeData themeData1(BuildContext context) {
     useMaterial3: true,
     textTheme: textTheme(),
     dividerTheme: const DividerThemeData(color: Color(0xFFEEEEEE)),
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: Color(0xFF0D0D0D).withValues(alpha: 0.5),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.transparent,
       type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.black,
       selectedItemColor: const Color(0xFFA8D64A),
       unselectedItemColor: Color(0xFFEEEEEE),
       unselectedLabelStyle: Theme.of(
         context,
-      ).textTheme.titleMedium!.copyWith(color: Color(0xff9E9E9E), fontSize: 10),
+      ).textTheme.titleMedium!.copyWith(color: Color(0xfff1f1f1), fontSize: 10),
       selectedLabelStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
         color: const Color(0xFF0D0D0D),
         fontSize: 10,
       ),
     ),
-    inputDecorationTheme: inputDecorationTheme(),
+    //inputDecorationTheme: inputDecorationTheme(),
   );
 }
 

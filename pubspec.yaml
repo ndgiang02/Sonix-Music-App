@@ -31,6 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  intl: ^0.20.2
+  flutter_localization: ^0.3.2
+
   # UI
   cupertino_icons: ^1.0.8
   animated_text_kit: ^4.2.3
@@ -57,6 +60,9 @@ dependencies:
   dio: ^5.8.0+1
   flutter_secure_storage: ^9.2.4
 
+  cached_network_image: ^3.4.1
+  shared_preferences: ^2.5.3
+
   file_picker: ^10.1.9
   image_picker: ^1.1.2
 
@@ -77,15 +83,15 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_launcher_icons: ^0.14.3
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+flutter_intl:
+  main_locale: en
+  enabled: true
+  output_dir: lib/core/common/translations
+  arb_dir: lib/core/common/translations
 
-# The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  generate: true
   uses-material-design: true
 
   assets:

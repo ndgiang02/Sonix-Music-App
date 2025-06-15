@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sonix/core/constants/assets.dart';
-import 'package:sonix/core/constants/constant.dart';
-import 'package:sonix/core/constants/icons.dart';
-import 'package:sonix/core/widgets/svg_widget.dart';
+import 'package:sonix/core/common/widgets/svg_widget.dart';
+import 'package:sonix/core/configs/constants/assets.dart';
+import 'package:sonix/core/configs/constants/constant.dart';
+import 'package:sonix/core/configs/constants/icons.dart';
 
 class NowPlayingScreen extends StatefulWidget {
   const NowPlayingScreen({super.key});
@@ -46,7 +46,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
         children: [
           Positioned.fill(
             child: Image.asset(
-              AppAssets.img_mtp,
+              img_mtp,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
@@ -65,7 +65,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-              child: Container(color: Colors.black.withOpacity(0.5)),
+              child: Container(color: background.withValues(alpha: 0.5)),
             ),
           ),
           Padding(
@@ -74,9 +74,9 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(16.0),
                   child: Image.asset(
-                    AppAssets.img_mtp,
+                    img_mtp,
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: MediaQuery.of(context).size.width * 0.8,
                     fit: BoxFit.cover,
@@ -95,14 +95,12 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Text(
+                Text(
                   'Nơi này có anh',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.displayMedium!.copyWith(color: secondary),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -110,7 +108,9 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                 Text(
                   'Sơn Tùng M-TP',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18, color: Colors.white70),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleMedium!.copyWith(color: secondary),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -119,11 +119,11 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                 SliderTheme(
                   data: SliderTheme.of(context).copyWith(
                     activeTrackColor: Theme.of(context).primaryColor,
-                    inactiveTrackColor: Colors.white30,
+                    inactiveTrackColor: surface,
                     thumbColor: Theme.of(context).primaryColor,
                     overlayColor: Theme.of(
                       context,
-                    ).primaryColor.withOpacity(0.2),
+                    ).primaryColor.withValues(alpha: 0.2),
                     thumbShape: const RoundSliderThumbShape(
                       enabledThumbRadius: 8.0,
                     ),
@@ -147,8 +147,8 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
-                      Text('0:00', style: TextStyle(color: Colors.white70)),
-                      Text('3:45', style: TextStyle(color: Colors.white70)),
+                      Text('0:00', style: TextStyle(color: surface)),
+                      Text('3:45', style: TextStyle(color: surface)),
                     ],
                   ),
                 ),
@@ -159,7 +159,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                     IconButton(
                       icon: const Icon(
                         Icons.shuffle,
-                        color: Colors.white,
+                        color: secondary,
                         size: 28,
                       ),
                       onPressed: () {},
@@ -167,7 +167,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                     IconButton(
                       icon: const Icon(
                         Icons.skip_previous,
-                        color: Colors.white,
+                        color: secondary,
                         size: 48,
                       ),
                       onPressed: () {},
@@ -182,16 +182,16 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                       icon: SvgWidget(
-                        ic: _isPlaying ? ic_search : ic_play,
+                        ic: _isPlaying ? icSearch : icPlay,
                         width: 60,
                         height: 60,
-                        color: AppColors.primary,
+                        color: primary,
                       ),
                     ),
                     IconButton(
                       icon: const Icon(
                         Icons.skip_next,
-                        color: Colors.white,
+                        color: secondary,
                         size: 48,
                       ),
                       onPressed: () {},
@@ -199,7 +199,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                     IconButton(
                       icon: const Icon(
                         Icons.repeat,
-                        color: Colors.white,
+                        color: secondary,
                         size: 28,
                       ),
                       onPressed: () {},
@@ -213,17 +213,13 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                     IconButton(
                       icon: const Icon(
                         Icons.favorite_border,
-                        color: Colors.white,
+                        color: secondary,
                         size: 28,
                       ),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: const Icon(
-                        Icons.share,
-                        color: Colors.white,
-                        size: 28,
-                      ),
+                      icon: const Icon(Icons.share, color: secondary, size: 28),
                       onPressed: () {
                         // Xử lý chia sẻ
                       },
@@ -231,7 +227,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                     IconButton(
                       icon: const Icon(
                         Icons.playlist_add,
-                        color: Colors.white,
+                        color: secondary,
                         size: 28,
                       ),
                       onPressed: () {},
