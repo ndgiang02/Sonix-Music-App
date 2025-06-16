@@ -12,6 +12,7 @@ class SessionController {
   LocalStorage localStorage = LocalStorage();
 
   bool isLogin = false;
+  String email = '';
   UserModel user = UserModel(
     id: 0,
     username: '',
@@ -20,6 +21,24 @@ class SessionController {
   );
 
   SessionController._internal();
+
+  Future<void> saveRememberMe(String email) async {
+    try {
+      await localStorage.setValue('email', email);
+    } catch (e) {
+      log("Error saving remembe me: $e");
+    }
+  }
+
+  Future<String> getRememberMe() async {
+    try {
+      var email = await localStorage.readValue('email');
+      return email;
+    } catch (e) {
+      log("Error saving remembe me: $e");
+      return '';
+    }
+  }
 
   Future<void> saveUserInPreference(UserModel user, String token) async {
     try {

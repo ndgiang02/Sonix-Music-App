@@ -107,38 +107,6 @@ String toString() {
 
 
 /// @nodoc
-
-
-class _ClearPageCommand implements SplashEvent {
-  const _ClearPageCommand();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClearPageCommand);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'SplashEvent.clearPageCommand()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
 mixin _$SplashState {
 
  bool get showButton; PageCommand? get pageCmd;

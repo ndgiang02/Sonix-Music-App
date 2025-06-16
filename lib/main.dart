@@ -10,6 +10,8 @@ import 'core/routing/routes.dart';
 import 'core/theme/app_theme.dart';
 import 'injection.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();

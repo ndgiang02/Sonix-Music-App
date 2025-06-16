@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sonix/core/storage/session_controller.dart';
+import 'package:sonix/features/presentation/auth/bloc/auth_bloc.dart';
 import 'package:sonix/features/presentation/auth/page/auth_page.dart';
 import 'package:sonix/features/presentation/home/page/home_page.dart';
 import 'package:sonix/features/presentation/main/page/main_page.dart';
 import 'package:sonix/features/presentation/splash/page/splash_page.dart';
+import 'package:sonix/injection.dart';
 
 class AppRoutes {
   static GoRouter getRouter(BuildContext context) {
-    final sessionController = SessionController();
     return GoRouter(
       initialLocation: '/splash',
       /*   redirect: (context, state) {
@@ -20,10 +22,14 @@ class AppRoutes {
           path: '/auth',
           pageBuilder:
               (context, state) => CustomTransitionPage(
-                child: AuthPage(),
+                child: BlocProvider<AuthBloc>(
+                  create: (_) => getIt<AuthBloc>()..add(const AuthEvent.init()),
+                  child: const AuthPage(),
+                ),
                 transitionsBuilder: _customTransition,
               ),
         ),
+
         GoRoute(path: '/home', builder: (context, state) => HomePage()),
         GoRoute(path: '/main', builder: (context, state) => MainPage()),
       ],

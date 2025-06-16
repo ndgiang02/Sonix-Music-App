@@ -9,21 +9,16 @@ part 'splash_event.dart';
 part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  final SessionController sessionController = getIt<SessionController>();
-
   SplashBloc() : super(const SplashState()) {
     on<_Started>((event, emit) async {
-      await sessionController.getUserFromPreference();
-      if (sessionController.isLogin) {
+      await Future.delayed(const Duration(seconds: 3));
+
+      final loggedIn = getIt<SessionController>().isLogin;
+      if (loggedIn) {
         emit(state.copyWith(pageCmd: PageCommandNavigatorPage(page: '/main')));
       } else {
-        await Future.delayed(const Duration(seconds: 2));
         emit(state.copyWith(showButton: true));
       }
-    });
-
-    on<_ClearPageCommand>((event, emit) {
-      emit(state.copyWith(pageCmd: null));
     });
   }
 }

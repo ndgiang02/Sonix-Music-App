@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sonix/core/common/enums/sheet_type.dart';
 import 'package:sonix/core/common/widgets/custom_button.dart';
 import 'package:sonix/core/configs/constants/constant.dart';
+import 'package:sonix/core/state/bloc/page_command.dart';
 import 'package:sonix/core/utils/responsive.dart';
 import 'package:sonix/features/presentation/auth/bloc/auth_bloc.dart';
-import 'package:sonix/features/presentation/auth/bloc/auth_event.dart';
-import 'package:sonix/features/presentation/auth/bloc/auth_state.dart';
 import 'package:sonix/features/presentation/auth/widget/login_bottom_sheet.dart';
 import 'package:sonix/features/presentation/auth/widget/register_bottom_sheet.dart';
 
@@ -16,40 +17,29 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) async {
-        if (state.sheetType != null && state.isSheetOpen) {
-          if (state.sheetType == SheetType.login) {
-            await showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              isDismissible: true,
-              enableDrag: true,
-              builder: (_) {
-                return ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: Responsive.height(55, context),
-                  ),
-                  child: const LoginBottomSheet(),
-                );
-              },
-            );
-            context.read<AuthBloc>().add(HideBottomSheet());
-          } else if (state.sheetType == SheetType.register) {
-            await showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              isDismissible: true,
-              enableDrag: true,
-              builder: (_) {
-                return ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: Responsive.height(55, context),
-                  ),
-                  child: const RegisterBottomSheet(),
-                );
-              },
-            );
-            context.read<AuthBloc>().add(HideBottomSheet());
-          }
+        final command = state.pageCommand;
+        if (command is PageCommandShowBottomSheet) {
+          await showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            isDismissible: true,
+            enableDrag: true,
+            builder: (_) {
+              return ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: Responsive.height(55, context),
+                ),
+                child:
+                    command.sheetType == SheetType.login
+                        ? const LoginBottomSheet()
+                        : const RegisterBottomSheet(),
+              );
+            },
+          );
+          context.read<AuthBloc>().add(OnClearPageCommand());
+        } else if (command is PageCommandNavigatorPage) {
+          context.go(command.page!);
+          context.read<AuthBloc>().add(OnClearPageCommand());
         }
       },
       builder: (context, state) {
@@ -76,7 +66,7 @@ class AuthPage extends StatelessWidget {
                         text: 'Login',
                         onPressed: () {
                           context.read<AuthBloc>().add(
-                            ShowBottomSheet(type: SheetType.login),
+                            AuthEvent.openSheet(SheetType.login),
                           );
                         },
                         backgroundColor: secondary,
@@ -90,7 +80,7 @@ class AuthPage extends StatelessWidget {
                         text: 'Register',
                         onPressed: () {
                           context.read<AuthBloc>().add(
-                            ShowBottomSheet(type: SheetType.register),
+                            AuthEvent.openSheet(SheetType.register),
                           );
                         },
                         backgroundColor: primary,
