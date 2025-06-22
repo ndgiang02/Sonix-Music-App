@@ -25,6 +25,7 @@ class SignUpOrSignInSocial extends StatelessWidget {
         OutlinedButton(
           onPressed: () => onPressedFaceBook.call(),
           style: OutlinedButton.styleFrom(
+            backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
               side: const BorderSide(color: Colors.grey),
@@ -35,6 +36,7 @@ class SignUpOrSignInSocial extends StatelessWidget {
         OutlinedButton(
           onPressed: () => onPressedGoogle.call(),
           style: OutlinedButton.styleFrom(
+            backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
               side: const BorderSide(color: Colors.grey),
@@ -46,6 +48,7 @@ class SignUpOrSignInSocial extends StatelessWidget {
           OutlinedButton(
             onPressed: () => onPressedApple.call(),
             style: OutlinedButton.styleFrom(
+              backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
                 side: const BorderSide(color: Colors.grey),

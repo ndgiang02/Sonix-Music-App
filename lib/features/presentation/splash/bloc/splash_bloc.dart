@@ -12,7 +12,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(const SplashState()) {
     on<_Started>((event, emit) async {
       await Future.delayed(const Duration(seconds: 3));
-
       final loggedIn = getIt<SessionController>().isLogin;
       if (loggedIn) {
         emit(state.copyWith(pageCmd: PageCommandNavigatorPage(page: '/main')));

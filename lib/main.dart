@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sonix/core/configs/constants/constant.dart';
 import 'package:sonix/core/state/cubit/app_cubit.dart';
+import 'package:sonix/features/presentation/main/bloc/main_bloc.dart';
 
 import 'core/common/translations/l10n.dart';
 import 'core/routing/routes.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt.get<AppCubit>()..getLocale()),
+        BlocProvider(create: (_) => getIt.get<MainBloc>()),
       ],
       child: BlocBuilder<AppCubit, AppState>(
         buildWhen: (previous, current) => previous != current,
@@ -34,6 +36,7 @@ class MyApp extends StatelessWidget {
             title: app_name,
             debugShowCheckedModeBanner: false,
             theme: themeData(context),
+            themeMode: ThemeMode.system,
             routerConfig: AppRoutes.getRouter(context),
             locale: state.locale,
             supportedLocales: const [Locale("vi"), Locale("en")],

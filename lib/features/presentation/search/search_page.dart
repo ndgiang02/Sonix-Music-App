@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:sonix/core/common/translations/l10n.dart';
 import 'package:sonix/core/common/widgets/custom_textfield.dart';
 import 'package:sonix/core/common/widgets/svg_widget.dart';
 import 'package:sonix/core/configs/constants/icons.dart';
+import 'package:sonix/core/utils/responsive.dart';
 
-class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
 
   @override
-  State<SearchPage> createState() => _SearchPageState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _controller = TextEditingController();
   bool isSearching = false;
 
@@ -55,20 +57,21 @@ class _SearchPageState extends State<SearchPage> {
                       hintText: 'Tìm kiếm bài hát',
                       prefixWidget: SvgWidget(
                         ic: icSearch,
-                        height: 12,
-                        width: 12,
+                        height: 10,
+                        width: 10,
+                        color: Colors.black,
                       ),
                       keyboardType: TextInputType.text,
-                      //icRight: ic_search,
                     ),
                   ),
                   if (isSearching)
                     TextButton(
                       onPressed: _cancelSearch,
-                      child: const Text('Huỷ'),
+                      child: Text(S.of(context).txt_cancel),
                     ),
                 ],
               ),
+              const SizedBox(height: Spacing.x4),
               const Text(
                 'Gợi ý cho bạn',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

@@ -15,7 +15,7 @@ class CustomBottomBar extends StatelessWidget {
     this.unselectedItemColor,
     this.selectedColorOpacity,
     this.itemShape = const StadiumBorder(),
-    this.margin = const EdgeInsets.all(8),
+    this.margin = const EdgeInsets.all(10),
     this.itemPadding = const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
     this.duration = const Duration(milliseconds: 500),
     this.curve = Curves.easeOutQuint,
@@ -37,6 +37,10 @@ class CustomBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final bottomInset = MediaQuery.paddingOf(context).bottom;
+    final effectiveMargin = margin.copyWith(
+      bottom: margin.bottom + bottomInset,
+    );
 
     return ColoredBox(
       color: Colors.transparent,

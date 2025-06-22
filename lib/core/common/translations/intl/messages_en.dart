@@ -91,11 +91,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "A verification email has been sent to your address. Please check your inbox to complete the verification process",
     ),
     "see_all": MessageLookupByLibrary.simpleMessage("See all"),
-    "tab_download": MessageLookupByLibrary.simpleMessage("Download"),
     "tab_explore": MessageLookupByLibrary.simpleMessage("Explore"),
     "tab_home": MessageLookupByLibrary.simpleMessage("Home"),
     "tab_my_list": MessageLookupByLibrary.simpleMessage("My List"),
     "tab_profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "tab_search": MessageLookupByLibrary.simpleMessage("Search"),
     "title_create_your_account": MessageLookupByLibrary.simpleMessage(
       "Create Your Account",
     ),
@@ -114,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account? ",
     ),
+    "txt_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "txt_dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don’t have an account? ",
     ),

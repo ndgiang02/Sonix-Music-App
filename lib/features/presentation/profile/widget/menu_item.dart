@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sonix/core/common/widgets/svg_widget.dart';
-import 'package:sonix/core/configs/constants/constant.dart';
 import 'package:sonix/core/configs/constants/icons.dart';
 import 'package:sonix/core/utils/responsive.dart';
 import 'package:sonix/features/presentation/profile/bloc/profile_bloc.dart';
@@ -39,12 +38,7 @@ class MenuItem extends StatelessWidget {
           children: [
             SvgWidget(ic: icLeft, color: Theme.of(context).colorScheme.primary),
             const SizedBox(width: Spacing.x4),
-            Text(
-              title,
-              style: Theme.of(
-                context,
-              ).textTheme.titleMedium!.copyWith(color: secondary, fontSize: 16),
-            ),
+            Text(title, style: Theme.of(context).textTheme.titleMedium),
             const Spacer(),
             if (type == MenuType.language)
               Padding(

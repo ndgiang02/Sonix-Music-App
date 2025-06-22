@@ -1,9 +1,8 @@
 {
   "tab_home": "Trang chủ",
   "tab_my_list": "Danh sách",
-  "tab_download": "Tải xuống",
   "tab_profile": "Cá nhân",
-  "tab_explore": "Khám phá",
+  "tab_search": "Tìm kiếm",
   "label_menu_edit_profile": "Chỉnh sửa hồ sơ",
   "label_menu_notification": "Thông báo",
   "label_menu_download": "Tải xuống",
@@ -53,6 +52,7 @@
   "title_verify_your_email": "Xác thực email",
   "mgs_verify_email": "Email xác thực đã được gửi đến địa chỉ của bạn. Hãy kiểm tra hộp thư để hoàn tất quá trình xác thực.",
   "btn_get_started": "Get Started",
-  "title_welcome_to_movie": "Welcome to Movie"
+  "title_welcome_to_movie": "Welcome to Movie",
+  "txt_cancel": "Hủy"
 }
 

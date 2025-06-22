@@ -89,11 +89,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Email xác thực đã được gửi đến địa chỉ của bạn. Hãy kiểm tra hộp thư để hoàn tất quá trình xác thực.",
     ),
     "see_all": MessageLookupByLibrary.simpleMessage("Xem thêm"),
-    "tab_download": MessageLookupByLibrary.simpleMessage("Tải xuống"),
-    "tab_explore": MessageLookupByLibrary.simpleMessage("Khám phá"),
     "tab_home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
     "tab_my_list": MessageLookupByLibrary.simpleMessage("Danh sách"),
     "tab_profile": MessageLookupByLibrary.simpleMessage("Cá nhân"),
+    "tab_search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
     "title_create_your_account": MessageLookupByLibrary.simpleMessage(
       "Tạo tài khoản",
     ),
@@ -114,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "txt_already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Đã có tài khoản? ",
     ),
+    "txt_cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
     "txt_dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Bạn chưa có tài khoản? ",
     ),

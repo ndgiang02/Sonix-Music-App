@@ -2,7 +2,7 @@
   "tab_home": "Home",
   "tab_explore": "Explore",
   "tab_my_list": "My List",
-  "tab_download": "Download",
+  "tab_search": "Search",
   "tab_profile": "Profile",
   "label_menu_edit_profile": "Edit Profile",
   "label_menu_notification": "Notification",
@@ -53,5 +53,6 @@
   "title_verify_your_email": "Verify your email",
   "mgs_verify_email": "A verification email has been sent to your address. Please check your inbox to complete the verification process",
   "btn_get_started": "Get Started",
-  "title_welcome_to_movie": "Welcome to Movie"
+  "title_welcome_to_movie": "Welcome to Movie",
+  "txt_cancel": "Cancel"
 }

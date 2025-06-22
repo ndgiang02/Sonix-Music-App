@@ -16,5 +16,6 @@ class Spacing {
   static const double x2 = 4;
   static const double x3 = 8;
   static const double x4 = 16;
-  static const double x5 = 32;
+  static const double x5 = 24;
+  static const double x6 = 32;
 }

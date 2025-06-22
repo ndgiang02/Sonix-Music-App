@@ -7,21 +7,23 @@ class CustomButton extends StatelessWidget {
   final String text;
   final Color backgroundColor;
   final Color textColor;
-  final VoidCallback onPressed;
+  final VoidCallback action;
   final bool showBorder;
   final FontWeight fontWeight;
   final double sizeText;
+  final bool enable;
 
   const CustomButton({
     super.key,
     this.icon,
     required this.text,
-    required this.onPressed,
+    required this.action,
     required this.backgroundColor,
     required this.textColor,
     required this.showBorder,
     required this.fontWeight,
     required this.sizeText,
+    required this.enable,
   });
 
   @override
@@ -40,7 +42,7 @@ class CustomButton extends StatelessWidget {
                   ? BorderSide(color: primary, width: 3)
                   : BorderSide.none,
         ),
-        onPressed: onPressed,
+        onPressed: () => enable ? action.call() : null,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

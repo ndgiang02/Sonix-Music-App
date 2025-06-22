@@ -1,5 +1,7 @@
 const kBaseAsset = 'assets/icons/';
 
+const icLogo = '${kBaseAsset}ic_logo.svg';
+
 const icEmail = '${kBaseAsset}ic_email.svg';
 const icPassword = '${kBaseAsset}ic_password.svg';
 const icPerson = '${kBaseAsset}ic_person.svg';
@@ -20,3 +22,6 @@ const icSelectedList = '${kBaseAsset}ic_tab_selected_my_list.svg';
 const icUpload = '${kBaseAsset}ic_tab_upload.svg';
 const icSelectedUpload = '${kBaseAsset}ic_tab_selected_upload.svg';
 const icArrowRight = '${kBaseAsset}ic_arrow_right.svg';
+
+const icChecked = '${kBaseAsset}ic_checked.svg';
+const icUnChecked = '${kBaseAsset}ic_unchecked.svg';

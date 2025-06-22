@@ -5,14 +5,14 @@ import 'package:sonix/core/utils/responsive.dart';
 import 'package:sonix/features/presentation/home/widget/playlist_widget.dart';
 import 'package:sonix/features/presentation/home/widget/song_widget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   int selectedCategoryIndex = 0;
   final categories = ['All', 'Party', 'Blues', 'Sad', 'Hip Hop'];
 
@@ -37,10 +37,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Text(
                       'Hello, Giang ✨',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        color: secondary,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ],
                 ),

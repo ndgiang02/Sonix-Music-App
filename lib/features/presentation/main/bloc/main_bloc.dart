@@ -7,10 +7,8 @@ part 'main_state.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
   MainBloc() : super(const MainState()) {
-    on<_OnChangePage>(_onChangePage);
-  }
-
-  void _onChangePage(_OnChangePage event, Emitter<MainState> emit) {
-    emit(state.copyWith(index: event.index));
+    on<_OnChangePage>((event, emit) {
+      emit(state.copyWith(index: event.index));
+    });
   }
 }

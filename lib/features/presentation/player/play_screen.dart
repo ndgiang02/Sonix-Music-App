@@ -6,14 +6,14 @@ import 'package:sonix/core/configs/constants/assets.dart';
 import 'package:sonix/core/configs/constants/constant.dart';
 import 'package:sonix/core/configs/constants/icons.dart';
 
-class NowPlayingScreen extends StatefulWidget {
-  const NowPlayingScreen({super.key});
+class PlayScreen extends StatefulWidget {
+  const PlayScreen({super.key});
 
   @override
-  State<NowPlayingScreen> createState() => _NowPlayingScreenState();
+  State<PlayScreen> createState() => _PlayScreenState();
 }
 
-class _NowPlayingScreenState extends State<NowPlayingScreen> {
+class _PlayScreenState extends State<PlayScreen> {
   double _currentSliderValue = 0.5;
   bool _isPlaying = false;
 

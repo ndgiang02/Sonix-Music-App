@@ -9,8 +9,8 @@ import 'package:sonix/core/utils/responsive.dart';
 import 'package:sonix/features/presentation/splash/bloc/splash_bloc.dart';
 import 'package:sonix/injection.dart';
 
-class SplashPage extends StatelessWidget {
-  const SplashPage({super.key});
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +71,13 @@ class SplashPage extends StatelessWidget {
                           duration: const Duration(milliseconds: 500),
                           child: CustomButton(
                             text: 'Get Started',
-                            onPressed: () => context.go('/auth'),
+                            action: () => context.go('/login'),
                             backgroundColor: primary,
                             textColor: secondary,
                             showBorder: false,
                             fontWeight: FontWeight.w700,
                             sizeText: 20,
+                            enable: true,
                           ),
                         ),
                       ],

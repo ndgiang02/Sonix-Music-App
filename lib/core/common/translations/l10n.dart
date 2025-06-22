@@ -69,9 +69,9 @@ class S {
     return Intl.message('My List', name: 'tab_my_list', desc: '', args: []);
   }
 
-  /// `Download`
-  String get tab_download {
-    return Intl.message('Download', name: 'tab_download', desc: '', args: []);
+  /// `Search`
+  String get tab_search {
+    return Intl.message('Search', name: 'tab_search', desc: '', args: []);
   }
 
   /// `Profile`
@@ -502,6 +502,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Cancel`
+  String get txt_cancel {
+    return Intl.message('Cancel', name: 'txt_cancel', desc: '', args: []);
   }
 }
 

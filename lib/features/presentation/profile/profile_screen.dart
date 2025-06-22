@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sonix/core/configs/constants/assets.dart';
-import 'package:sonix/core/configs/constants/constant.dart';
 import 'package:sonix/core/utils/responsive.dart';
 import 'package:sonix/features/presentation/profile/bloc/profile_bloc.dart';
 import 'package:sonix/features/presentation/profile/widget/avatar_profile.dart';
@@ -11,8 +10,8 @@ import 'package:sonix/features/presentation/profile/widget/menu_item.dart';
 import 'package:sonix/features/presentation/profile/widget/menu_type.dart';
 import 'package:sonix/injection.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,27 +19,27 @@ class ProfilePage extends StatelessWidget {
     return BlocProvider<ProfileBloc>(
       create: (context) => bloc,
       child: Scaffold(
+        appBar: AppBar(),
         body: SafeArea(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.only(bottom: 24),
+            padding: const EdgeInsets.all(Spacing.x3),
             child: Column(
               children: [
                 AvatarProfile(url: avatar),
                 const SizedBox(height: Spacing.x4),
                 Text(
                   'Flutter',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: secondary,
-                    fontSize: 18,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: Spacing.x2),
                 Text(
                   'flutter@gmail.com',
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: Spacing.x4),
                 ...MenuType.values.map(
                   (item) => MenuItem(
                     title: item.name(context),
