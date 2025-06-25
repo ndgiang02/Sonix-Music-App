@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sonix/core/common/translations/l10n.dart';
 import 'package:sonix/core/common/widgets/custom_button.dart';
 import 'package:sonix/core/configs/constants/constant.dart';
 import 'package:sonix/core/state/bloc/page_command.dart';
@@ -70,7 +71,7 @@ class SplashScreen extends StatelessWidget {
                           opacity: state.showButton ? 1.0 : 0.0,
                           duration: const Duration(milliseconds: 500),
                           child: CustomButton(
-                            text: 'Get Started',
+                            text: S.of(context).btn_get_started,
                             action: () => context.go('/login'),
                             backgroundColor: primary,
                             textColor: secondary,

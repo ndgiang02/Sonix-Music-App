@@ -26,7 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btn_forgot_fassword": MessageLookupByLibrary.simpleMessage(
       "Quên mật khẩu?",
     ),
-    "btn_get_started": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "btn_get_started": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
     "btn_login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
     "btn_play": MessageLookupByLibrary.simpleMessage("Chơi"),
     "btn_sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sonix/core/common/widgets/svg_widget.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextInputType keyboardType;
@@ -83,7 +84,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
           decoration: InputDecoration(
             hintText: widget.hintText,
             prefixIcon: widget.prefixWidget,
-            suffixIcon: Icon(widget.icon),
+            suffixIcon:
+                widget.icRight != null || widget.icon != null
+                    ? InkWell(
+                      borderRadius: BorderRadius.circular(20),
+                      onTap: () => widget.actionRight!.call(),
+                      child:
+                          widget.icon != null
+                              ? Icon(widget.icon)
+                              : SvgWidget(ic: widget.icRight!),
+                    )
+                    : null,
             counterText: '',
             filled: true,
           ),

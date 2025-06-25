@@ -1,37 +1,53 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sonix/core/common/widgets/svg_widget.dart';
-import 'package:sonix/core/configs/constants/assets.dart';
-import 'package:sonix/core/configs/constants/constant.dart';
-import 'package:sonix/core/configs/constants/icons.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sonix/features/presentation/player/widget/action_button.dart';
+import 'package:sonix/features/presentation/player/widget/control_button.dart';
+import 'package:sonix/features/presentation/player/widget/play_progress.dart';
+import 'package:sonix/features/presentation/player/widget/play_time.dart';
+import 'package:sonix/features/presentation/player/widget/song_album.dart';
+import 'package:sonix/features/presentation/player/widget/song_info.dart';
 
-class PlayScreen extends StatefulWidget {
+import 'bloc/play_bloc.dart';
+
+class PlayScreen extends StatelessWidget {
   const PlayScreen({super.key});
 
   @override
-  State<PlayScreen> createState() => _PlayScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create:
+          (context) =>
+              PlayBloc()..add(
+                const PlayEvent.loadSong(
+                  title: 'Nơi này có anh',
+                  artist: 'Sơn Tùng M-TP',
+                  imagePath: 'assets/images/ok.jpg',
+                  duration: 225,
+                ),
+              ),
+      child: const _PlayScreenBody(),
+    );
+  }
 }
 
-class _PlayScreenState extends State<PlayScreen> {
-  double _currentSliderValue = 0.5;
-  bool _isPlaying = false;
+class _PlayScreenBody extends StatelessWidget {
+  const _PlayScreenBody();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
+        backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(
             Icons.keyboard_arrow_down,
             color: Colors.white,
             size: 30,
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
         ),
         centerTitle: true,
         actions: [
@@ -42,202 +58,108 @@ class _PlayScreenState extends State<PlayScreen> {
         ],
       ),
       extendBodyBehindAppBar: true,
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              img_mtp,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[900],
-                  child: const Center(
-                    child: Icon(
-                      Icons.music_note,
-                      size: 150,
-                      color: Colors.grey,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-          Positioned.fill(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-              child: Container(color: background.withValues(alpha: 0.5)),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16.0),
-                  child: Image.asset(
-                    img_mtp,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.width * 0.8,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: MediaQuery.of(context).size.width * 0.8,
-                        color: Colors.grey[700],
-                        child: const Icon(
-                          Icons.music_note,
-                          size: 100,
-                          color: Colors.grey,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(height: 30),
-                Text(
-                  'Nơi này có anh',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.displayMedium!.copyWith(color: secondary),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Sơn Tùng M-TP',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleMedium!.copyWith(color: secondary),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 30),
+      body: BlocBuilder<PlayBloc, PlayState>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              Positioned.fill(
+                child:
+                    state.currentImage != null
+                        ? Image.asset(
+                          state.currentImage!,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return _buildDefaultBackground();
+                          },
+                        )
+                        : _buildDefaultBackground(),
+              ),
 
-                SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                    activeTrackColor: Theme.of(context).primaryColor,
-                    inactiveTrackColor: surface,
-                    thumbColor: Theme.of(context).primaryColor,
-                    overlayColor: Theme.of(
-                      context,
-                    ).primaryColor.withValues(alpha: 0.2),
-                    thumbShape: const RoundSliderThumbShape(
-                      enabledThumbRadius: 8.0,
-                    ),
-                    overlayShape: const RoundSliderOverlayShape(
-                      overlayRadius: 16.0,
-                    ),
-                  ),
-                  child: Slider(
-                    value: _currentSliderValue,
-                    min: 0.0,
-                    max: 1.0,
-                    onChanged: (double value) {
-                      setState(() {
-                        _currentSliderValue = value;
-                      });
-                    },
-                  ),
+              Positioned.fill(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                  child: Container(color: Colors.black.withValues(alpha: 0.5)),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text('0:00', style: TextStyle(color: surface)),
-                      Text('3:45', style: TextStyle(color: surface)),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+              ),
+
+              // Main Content
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.shuffle,
-                        color: secondary,
-                        size: 28,
-                      ),
-                      onPressed: () {},
+                    SongAlbum(imagePath: state.currentImage),
+                    const SizedBox(height: 30),
+
+                    SongInfo(
+                      title: state.currentSong,
+                      artist: state.currentArtist,
                     ),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.skip_previous,
-                        color: secondary,
-                        size: 48,
-                      ),
-                      onPressed: () {},
+                    const SizedBox(height: 30),
+
+                    PlayProgress(
+                      position: state.currentPosition,
+                      total: state.totalDuration,
+                      onSeek:
+                          (pos) =>
+                              context.read<PlayBloc>().add(PlayEvent.seek(pos)),
                     ),
 
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _isPlaying = !_isPlaying;
-                        });
-                      },
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      icon: SvgWidget(
-                        ic: _isPlaying ? icSearch : icPlay,
-                        width: 60,
-                        height: 60,
-                        color: primary,
-                      ),
+                    PlayTime(
+                      currentPosition: state.currentPosition,
+                      totalDuration: state.totalDuration,
                     ),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.skip_next,
-                        color: secondary,
-                        size: 48,
-                      ),
-                      onPressed: () {},
+                    const SizedBox(height: 30),
+
+                    ControlButtons(
+                      isPlaying: state.isPlaying,
+                      isShuffle: state.isShuffle,
+                      isRepeat: state.isRepeat,
+                      onPlayPause:
+                          () => context.read<PlayBloc>().add(
+                            const PlayEvent.playPause(),
+                          ),
+                      onNext:
+                          () => context.read<PlayBloc>().add(
+                            const PlayEvent.next(),
+                          ),
+                      onPrev:
+                          () => context.read<PlayBloc>().add(
+                            const PlayEvent.previous(),
+                          ),
+                      onToggleShuffle:
+                          () => context.read<PlayBloc>().add(
+                            const PlayEvent.toggleShuffle(),
+                          ),
+                      onToggleRepeat:
+                          () => context.read<PlayBloc>().add(
+                            const PlayEvent.toggleRepeat(),
+                          ),
                     ),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.repeat,
-                        color: secondary,
-                        size: 28,
-                      ),
-                      onPressed: () {},
+                    const SizedBox(height: 30),
+
+                    ActionButtons(
+                      isFavorite: state.isFavorite,
+                      onToggleFavorite:
+                          () => context.read<PlayBloc>().add(
+                            const PlayEvent.toggleFavorite(),
+                          ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.favorite_border,
-                        color: secondary,
-                        size: 28,
-                      ),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.share, color: secondary, size: 28),
-                      onPressed: () {
-                        // Xử lý chia sẻ
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.playlist_add,
-                        color: secondary,
-                        size: 28,
-                      ),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildDefaultBackground() {
+    return Container(
+      color: Colors.grey[900],
+      child: const Center(
+        child: Icon(Icons.music_note, size: 150, color: Colors.grey),
       ),
     );
   }

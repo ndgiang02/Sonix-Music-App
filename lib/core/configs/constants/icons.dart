@@ -8,6 +8,8 @@ const icPerson = '${kBaseAsset}ic_person.svg';
 const icSearch = '${kBaseAsset}ic_search.svg';
 
 const icPlay = '${kBaseAsset}ic_play.svg';
+const icPause = '${kBaseAsset}ic_pause.svg';
+
 const icDownload = '${kBaseAsset}ic_download.svg';
 const icEdit = '${kBaseAsset}ic_edit_avatar.svg';
 

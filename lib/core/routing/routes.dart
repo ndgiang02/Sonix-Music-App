@@ -10,12 +10,13 @@ import '../../features/presentation/splash/splash_screen.dart';
 class AppRoutes {
   static GoRouter getRouter(BuildContext context) {
     return GoRouter(
-      initialLocation: '/main',
+      initialLocation: '/play',
       /*   redirect: (context, state) {
         return _redirect(context, state, sessionController);
       },*/
       routes: [
         GoRoute(path: '/splash', builder: (context, state) => SplashScreen()),
+        GoRoute(path: '/play', builder: (context, state) => PlayScreen()),
 
         GoRoute(
           path: '/login',
